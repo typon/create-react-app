@@ -1,10 +1,22 @@
 ## 3.3.0 (2019-xx-xx)
 
-DRAFT
+v3.3.0 is a minor release that adds new features, including custom templates and support for the new optional chaining and nullish coalescing operators.
 
 ### Custom Templates
 
-DRAFT
+You can now create a new app using custom templates.
+
+We've published our existing templates as [`cra-template`](https://github.com/facebook/create-react-app/tree/master/packages/cra-template) and [`cra-template-typescript`](https://github.com/facebook/create-react-app/tree/master/packages/cra-template-typescript), but we expect to see many great templates from the community over the coming weeks.
+
+The below command shows how you can create a new app with `cra-template-typescript`.
+
+```sh
+npx create-react-app my-app --template typescript
+```
+
+Note that you can omit the prefix `cra-template-` when specifying which template you would like. For TypeScript users, we're deprecating `--typescript` in favour of `--template typescript`.
+
+If you don't set a template, we'll create your new app with `cra-template` - which is just a new name for our base template.
 
 ### Optional Chaining and Nullish Coalescing Operators
 
@@ -39,6 +51,35 @@ We've added support for [numeric separators](https://github.com/tc39/proposal-nu
 
 1_000_000_000; // Ah, so a billion
 101_475_938.38; // And this is hundreds of millions
+```
+
+### no-unexpected-multiline
+
+We've removed this rule as it is not compatible with Prettier. If you rely on this rule you can re-enable it by [extending our ESLint config](https://create-react-app.dev/docs/setting-up-your-editor/#experimental-extending-the-eslint-config) and adding the following:
+
+```json
+{
+  "extends": "react-app",
+  "rules": {
+    "no-unexpected-multiline": "warn"
+  }
+}
+```
+
+<!-- INSERT LERNA CHANGELOG -->
+
+### Migrating from 3.2.0 to 3.3.0
+
+Inside any created project that has not been ejected, run:
+
+```sh
+npm install --save --save-exact react-scripts@3.3.0
+```
+
+or
+
+```sh
+yarn add --exact react-scripts@3.3.0
 ```
 
 ## 3.2.0 (2019-10-03)
